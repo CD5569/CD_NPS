@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collegedunia Feedback</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            max-width: 200px;
+        }
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+        .question {
+            margin: 20px 0;
+        }
+        .question label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #555555;
+        }
+        .rating {
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+        }
+        .rating div {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            color: black;
+            background-color: #e0e0e0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .rating div:hover {
+            transform: scale(1.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .rating div[data-value="0"] { background-color: #ff4d4d; }
+        .rating div[data-value="1"] { background-color: #ff6666; }
+        .rating div[data-value="2"] { background-color: #ff8080; }
+        .rating div[data-value="3"] { background-color: #ff9999; }
+        .rating div[data-value="4"] { background-color: #ffb3b3; }
+        .rating div[data-value="5"] { background-color: #ffd966; }
+        .rating div[data-value="6"] { background-color: #d9ff66; }
+        .rating div[data-value="7"] { background-color: #b3ff4d; }
+        .rating div[data-value="8"] { background-color: #80ff00; }
+        .rating div[data-value="9"] { background-color: #4dff00; }
+        .rating div[data-value="10"] { background-color: #00cc00; }
+        .rating div.selected {
+            background-color: #007BFF;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #000000;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #888888;
+        }
+        .footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="https://image-static.collegedunia.com/public/images/cd_logo_dark_new.png" alt="Collegedunia Logo">
+        </div>
+        <h1>We Value Your Feedback!</h1>
+        <p>Hi [Recipient's Name],</p>
+        <p>Please take a moment to share your experience with us. Your feedback helps us grow and serve you better.</p>
+
+        <form id="feedbackForm" action="https://script.google.com/macros/s/AKfycbzxcNgQ-uHYa-wcV7iv6iccwXpzWyZkVTNQAjV0OO-pPAuh0eQHoA1uzPFh3R2uYSdY/exec" method="post">
+
+<input type="hidden" name="email" id="email">
+
+            <div class="question">
+                <label>1. How likely are you to recommend Collegedunia to a friend or colleague?</label>
+                <div class="rating" data-input="recommendation">
+                    <div data-value="0"></div>
+                    <div data-value="1"></div>
+                    <div data-value="2"></div>
+                    <div data-value="3"></div>
+                    <div data-value="4"></div>
+                    <div data-value="5"></div>
+                    <div data-value="6"></div>
+                    <div data-value="7"></div>
+                    <div data-value="8"></div>
+                    <div data-value="9"></div>
+                    <div data-value="10"></div>
+                </div>
+                <input type="hidden" name="recommendation">
+            </div>
+
+            <div class="question">
+                <label>2. Account Manager Rating (0-10):</label>
+                <div class="rating" data-input="accountManager">
+                    <div data-value="0"></div>
+                    <div data-value="1"></div>
+                    <div data-value="2"></div>
+                    <div data-value="3"></div>
+                    <div data-value="4"></div>
+                    <div data-value="5"></div>
+                    <div data-value="6"></div>
+                    <div data-value="7"></div>
+                    <div data-value="8"></div>
+                    <div data-value="9"></div>
+                    <div data-value="10"></div>
+                </div>
+                <input type="hidden" name="accountManager">
+            </div>
+
+            <div class="question">
+                <label>3. Delivery Rating (0-10):</label>
+                <div class="rating" data-input="delivery">
+                    <div data-value="0"></div>
+                    <div data-value="1"></div>
+                    <div data-value="2"></div>
+                    <div data-value="3"></div>
+                    <div data-value="4"></div>
+                    <div data-value="5"></div>
+                    <div data-value="6"></div>
+                    <div data-value="7"></div>
+                    <div data-value="8"></div>
+                    <div data-value="9"></div>
+                    <div data-value="10"></div>
+                </div>
+                <input type="hidden" name="delivery">
+            </div>
+
+            <div class="question">
+                <label>4. Team Lead Rating (0-10):</label>
+                <div class="rating" data-input="teamLead">
+                    <div data-value="0"></div>
+                    <div data-value="1"></div>
+                    <div data-value="2"></div>
+                    <div data-value="3"></div>
+                    <div data-value="4"></div>
+                    <div data-value="5"></div>
+                    <div data-value="6"></div>
+                    <div data-value="7"></div>
+                    <div data-value="8"></div>
+                    <div data-value="9"></div>
+                    <div data-value="10"></div>
+                </div>
+                <input type="hidden" name="teamLead">
+            </div>
+
+            <div class="question">
+                <label>5. Additional Comments:</label>
+                <textarea name="comments" rows="4" placeholder="Tell us how we can improve or share any additional feedback!"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Feedback</button>
+        </form>
+
+        <div class="footer">
+            <p>Thank you for helping us grow and serve you better!</p>
+            <p>Don't want to receive emails? <a href="#">Click here to unsubscribe</a>.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.rating div').forEach(div => {
+                div.addEventListener('click', function () {
+                    const parent = this.parentElement;
+                    parent.querySelectorAll('.selected').forEach(el => {
+                        el.classList.remove('selected');
+                        el.textContent = '';
+                    });
+                    this.classList.add('selected');
+                    this.textContent = this.dataset.value;
+
+                    // Set the value in the hidden input
+                    const inputName = parent.dataset.input;
+                    document.querySelector(`input[name="${inputName}"]`).value = this.dataset.value;
+                });
+            });
+        });
+    </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Extract the email parameter from the URL
+        const urlParams = new URLSearchParams(window.location.href.split('?')[1]);
+        const email = urlParams.get('email');
+        console.log("Email parameter from URL:", email);
+
+        // Populate the hidden input field with the email value
+        const emailInput = document.getElementById('email');
+        if (email) {
+            emailInput.value = email;
+            console.log("Hidden input field found and updated:", emailInput.value);
+        } else {
+            console.error("Email parameter not found in URL.");
+        }
+    });
+</script>
+
+
+
+
+</body>
+</html>
