@@ -229,21 +229,25 @@
     </div>
 
     <script>
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.rating div').forEach(div => {
-        div.addEventListener('click', function () {
-            const parent = this.parentElement;
-            parent.querySelectorAll('.selected').forEach(el => {
-                el.classList.remove('selected');
-            });
-            this.classList.add('selected');
-
-            // Set the value in the hidden input
-            const inputName = parent.dataset.input;
-            document.querySelector(`input[name="${inputName}"]`).value = this.dataset.value;
-        });
-    });
-});
+	document.addEventListener('DOMContentLoaded', () => {
+	    document.querySelectorAll('.rating div').forEach(div => {
+	        div.addEventListener('click', function () {
+	            const parent = this.parentElement;
+	
+	            // Remove 'selected' class from all siblings
+	            parent.querySelectorAll('.selected').forEach(el => {
+	                el.classList.remove('selected');
+	            });
+	
+	            // Add 'selected' class to the clicked element
+	            this.classList.add('selected');
+	
+	            // Set the value in the hidden input
+	            const inputName = parent.dataset.input;
+	            document.querySelector(`input[name="${inputName}"]`).value = this.dataset.value;
+	        });
+	    });
+	});
     </script>
 
 <script>
