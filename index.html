@@ -10,6 +10,7 @@
             background-color: #f9f9f9;
             margin: 0;
             padding: 0;
+            color: #444444; /* Darker font color for overall text */
         }
         .container {
             max-width: 600px;
@@ -26,9 +27,9 @@
         .logo img {
             max-width: 200px;
         }
-        h1 {
+        h2 {
             text-align: center;
-            color: #333333;
+            color: #333333; /* Darker color for the heading */
         }
         .question {
             margin: 20px 0;
@@ -37,23 +38,25 @@
             display: block;
             font-weight: bold;
             margin-bottom: 10px;
-            color: #555555;
+            color: #555555; /* Darker color for question labels */
         }
         .rating {
             display: flex;
             gap: 5px;
+	    padding: 5px;
             justify-content: center;
+            flex-wrap: wrap; /* Ensures proper layout on smaller screens */
         }
         .rating div {
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             text-align: center;
-            line-height: 30px;
+            line-height: 40px;
             font-size: 14px;
             font-weight: bold;
             border-radius: 4px;
             cursor: pointer;
-            color: black;
+            color: #444444; /* Darker font color inside the number boxes */
             background-color: #e0e0e0;
             transition: transform 0.2s, box-shadow 0.2s;
         }
@@ -83,7 +86,7 @@
             border: 1px solid #cccccc;
             border-radius: 4px;
             font-size: 14px;
-            color: #000000;
+            color: #333333; /* Darker color for text area text */
         }
         .submit-btn {
             display: block;
@@ -104,7 +107,7 @@
             text-align: center;
             margin-top: 20px;
             font-size: 12px;
-            color: #888888;
+            color: #888888; /* Light color for footer text */
         }
         .footer a {
             color: #007BFF;
@@ -113,6 +116,18 @@
         .footer a:hover {
             text-decoration: underline;
         }
+        @media (max-width: 600px) {
+            .rating div {
+                width: 35px;
+                height: 35px;
+                line-height: 35px;
+                font-size: 12px;
+            }
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -120,28 +135,27 @@
         <div class="logo">
             <img src="https://image-static.collegedunia.com/public/images/cd_logo_dark_new.png" alt="Collegedunia Logo">
         </div>
-        <h1>We Value Your Feedback!</h1>
+        <h2>We Value Your Feedback!</h2>
         <p>Hi Partner!</p>
         <p>Please take a moment to share your experience with us. Your feedback helps us grow and serve you better.</p>
 
         <form id="feedbackForm" action="https://script.google.com/macros/s/AKfycby0EcWQSup_HedzIHMUj3528JXH_dKwwmMZal4mqMpUSW4ncGFnlt5uQOIXpVk6SjJW/exec" method="post">
-
-<input type="hidden" name="email" id="email">
+            <input type="hidden" name="email" id="email">
 
             <div class="question">
                 <label>1. How likely are you to recommend Collegedunia to a friend or colleague?</label>
                 <div class="rating" data-input="recommendation">
-                    <div data-value="0"></div>
-                    <div data-value="1"></div>
-                    <div data-value="2"></div>
-                    <div data-value="3"></div>
-                    <div data-value="4"></div>
-                    <div data-value="5"></div>
-                    <div data-value="6"></div>
-                    <div data-value="7"></div>
-                    <div data-value="8"></div>
-                    <div data-value="9"></div>
-                    <div data-value="10"></div>
+                    <div data-value="0">0</div>
+                    <div data-value="1">1</div>
+                    <div data-value="2">2</div>
+                    <div data-value="3">3</div>
+                    <div data-value="4">4</div>
+                    <div data-value="5">5</div>
+                    <div data-value="6">6</div>
+                    <div data-value="7">7</div>
+                    <div data-value="8">8</div>
+                    <div data-value="9">9</div>
+                    <div data-value="10">10</div>
                 </div>
                 <input type="hidden" name="recommendation">
             </div>
@@ -149,17 +163,17 @@
             <div class="question">
                 <label>2. Account Manager Rating (0-10):</label>
                 <div class="rating" data-input="accountManager">
-                    <div data-value="0"></div>
-                    <div data-value="1"></div>
-                    <div data-value="2"></div>
-                    <div data-value="3"></div>
-                    <div data-value="4"></div>
-                    <div data-value="5"></div>
-                    <div data-value="6"></div>
-                    <div data-value="7"></div>
-                    <div data-value="8"></div>
-                    <div data-value="9"></div>
-                    <div data-value="10"></div>
+                    <div data-value="0">0</div>
+                    <div data-value="1">1</div>
+                    <div data-value="2">2</div>
+                    <div data-value="3">3</div>
+                    <div data-value="4">4</div>
+                    <div data-value="5">5</div>
+                    <div data-value="6">6</div>
+                    <div data-value="7">7</div>
+                    <div data-value="8">8</div>
+                    <div data-value="9">9</div>
+                    <div data-value="10">10</div>
                 </div>
                 <input type="hidden" name="accountManager">
             </div>
@@ -167,17 +181,17 @@
             <div class="question">
                 <label>3. Delivery Rating (0-10):</label>
                 <div class="rating" data-input="delivery">
-                    <div data-value="0"></div>
-                    <div data-value="1"></div>
-                    <div data-value="2"></div>
-                    <div data-value="3"></div>
-                    <div data-value="4"></div>
-                    <div data-value="5"></div>
-                    <div data-value="6"></div>
-                    <div data-value="7"></div>
-                    <div data-value="8"></div>
-                    <div data-value="9"></div>
-                    <div data-value="10"></div>
+                    <div data-value="0">0</div>
+                    <div data-value="1">1</div>
+                    <div data-value="2">2</div>
+                    <div data-value="3">3</div>
+                    <div data-value="4">4</div>
+                    <div data-value="5">5</div>
+                    <div data-value="6">6</div>
+                    <div data-value="7">7</div>
+                    <div data-value="8">8</div>
+                    <div data-value="9">9</div>
+                    <div data-value="10">10</div>
                 </div>
                 <input type="hidden" name="delivery">
             </div>
@@ -185,17 +199,17 @@
             <div class="question">
                 <label>4. Team Lead Rating (0-10):</label>
                 <div class="rating" data-input="teamLead">
-                    <div data-value="0"></div>
-                    <div data-value="1"></div>
-                    <div data-value="2"></div>
-                    <div data-value="3"></div>
-                    <div data-value="4"></div>
-                    <div data-value="5"></div>
-                    <div data-value="6"></div>
-                    <div data-value="7"></div>
-                    <div data-value="8"></div>
-                    <div data-value="9"></div>
-                    <div data-value="10"></div>
+                    <div data-value="0">0</div>
+                    <div data-value="1">1</div>
+                    <div data-value="2">2</div>
+                    <div data-value="3">3</div>
+                    <div data-value="4">4</div>
+                    <div data-value="5">5</div>
+                    <div data-value="6">6</div>
+                    <div data-value="7">7</div>
+                    <div data-value="8">8</div>
+                    <div data-value="9">9</div>
+                    <div data-value="10">10</div>
                 </div>
                 <input type="hidden" name="teamLead">
             </div>
