@@ -237,7 +237,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         // Extract the email parameter from the URL
-        const urlParams = new URLSearchParams(window.location.href.split('?')[1]);
+        const urlParams = new URLSearchParams(window.location.search);
         const email = urlParams.get('email');
         console.log("Email parameter from URL:", email);
 
@@ -245,12 +245,23 @@
         const emailInput = document.getElementById('email');
         if (email) {
             emailInput.value = email;
-            console.log("Hidden input field found and updated:", emailInput.value);
+            console.log("Hidden input field updated:", emailInput.value);
         } else {
             console.error("Email parameter not found in URL.");
         }
+
+        // Ensure email is included before form submission
+        const feedbackForm = document.getElementById('feedbackForm');
+        feedbackForm.addEventListener('submit', (e) => {
+            if (!emailInput.value) {
+                e.preventDefault();
+                alert("Email is missing. Please refresh the page.");
+                console.error("Email not set in hidden input field.");
+            }
+        });
     });
 </script>
+
 
 
 
