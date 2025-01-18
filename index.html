@@ -234,12 +234,12 @@
 	        div.addEventListener('click', function () {
 	            const parent = this.parentElement;
 	
-	            // Remove 'selected' class from all siblings
+	            // Remove the 'selected' class from previously selected boxes
 	            parent.querySelectorAll('.selected').forEach(el => {
 	                el.classList.remove('selected');
 	            });
 	
-	            // Add 'selected' class to the clicked element
+	            // Add 'selected' class to the clicked box
 	            this.classList.add('selected');
 	
 	            // Set the value in the hidden input
@@ -248,6 +248,7 @@
 	        });
 	    });
 	});
+
     </script>
 
 <script>
