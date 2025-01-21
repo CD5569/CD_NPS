@@ -265,13 +265,17 @@
             console.log("Hidden input field updated:", emailInput.value);
         } else {
             console.error("Email parameter not found in URL.");
+            alert("Email parameter missing. Please refresh the page with the correct URL.");
+            return; // Exit if email is not found
         }
 
         // Handle form submission
         const feedbackForm = document.getElementById('feedbackForm');
         feedbackForm.addEventListener('submit', async (e) => {
             e.preventDefault(); // Prevent default form submission
+            console.log("Form submission started");
 
+            // Ensure email input is populated
             if (!emailInput.value) {
                 alert("Email is missing. Please refresh the page.");
                 console.error("Email not set in hidden input field.");
@@ -280,23 +284,39 @@
 
             // Gather form data
             const formData = new FormData(feedbackForm);
-
             try {
-                // Submit the form data using the Fetch API
-                const response = await fetch(feedbackForm.action, {
-                    method: 'POST',
-                    body: formData,
-                });
+                // Check if mobile browser supports Fetch API
+                if (window.fetch) {
+                    console.log("Using Fetch API for form submission");
+                    const response = await fetch(feedbackForm.action, {
+                        method: 'POST',
+                        body: formData,
+                    });
 
-                if (response.ok) {
-                    console.log("Form submitted successfully:", await response.text());
-
-                    // Redirect to the Thank You page
-		window.location.replace('./thankyou.html');
-
+                    if (response.ok) {
+                        console.log("Form submitted successfully:", await response.text());
+                        // Redirect to the Thank You page
+                        window.location.replace('./thankyou.html');
+                    } else {
+                        console.error("Form submission failed:", response.statusText);
+                        alert("An error occurred while submitting the form. Please try again.");
+                    }
                 } else {
-                    console.error("Form submission failed:", response.statusText);
-                    alert("An error occurred while submitting the form. Please try again.");
+                    console.log("Fetch not supported. Using XMLHttpRequest.");
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('POST', feedbackForm.action, true);
+                    xhr.onreadystatechange = () => {
+                        if (xhr.readyState === XMLHttpRequest.DONE) {
+                            if (xhr.status === 200) {
+                                console.log("Form submitted successfully with XMLHttpRequest.");
+                                window.location.replace('./thankyou.html');
+                            } else {
+                                console.error("Form submission failed with XMLHttpRequest:", xhr.statusText);
+                                alert("An error occurred while submitting the form. Please try again.");
+                            }
+                        }
+                    };
+                    xhr.send(formData);
                 }
             } catch (error) {
                 console.error("Error submitting the form:", error);
