@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You!</title>
+    <style>
+        /* General Reset */
+        body, html {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', Arial, sans-serif;
+            color: #333;
+        }
+
+        /* Background Gradient and Styling */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            overflow: hidden;
+        }
+
+        /* Glow Effects */
+        .thank-you-container {
+            text-align: center;
+            background: #fff;
+            padding: 50px 40px;
+            max-width: 500px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Title Styling */
+        h1 {
+            font-size: 3rem;
+            color: #1976d2;
+            margin-bottom: 20px;
+        }
+
+        /* Subtext Styling */
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        /* Call-to-Action Button with Logo */
+        a {
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        a img {
+            max-width: 200px;
+            padding: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        a img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Subtle Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="thank-you-container">
+        <h1>Thank You!</h1>
+        <p>Your feedback has been submitted successfully. Your input helps us improve and serve you better!</p>
+        <a href="https://www.collegedunia.com">
+            <img src="https://image-static.collegedunia.com/public/images/cd_logo_dark_new.png" alt="Collegedunia Logo">
+        </a>
+    </div>
+</body>
+</html>
