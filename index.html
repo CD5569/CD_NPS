@@ -252,71 +252,58 @@
     </script>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-      // Extract the email parameter from the URL
-      const urlParams = new URLSearchParams(window.location.search);
-      const email = urlParams.get('email');
-      console.log("Email parameter from URL:", email);
+    document.addEventListener('DOMContentLoaded', () => {
+        // Extract the email parameter from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const email = urlParams.get('email');
+        console.log("Email parameter from URL:", email);
 
-      // Populate the hidden input field with the email value
-      const emailInput = document.getElementById('email');
-      if (email) {
-          emailInput.value = email;
-          console.log("Hidden input field updated:", emailInput.value);
-      } else {
-          console.error("Email parameter not found in URL.");
-      }
+        // Populate the hidden input field with the email value
+        const emailInput = document.getElementById('email');
+        if (email) {
+            emailInput.value = email;
+            console.log("Hidden input field updated:", emailInput.value);
+        } else {
+            console.error("Email parameter not found in URL.");
+        }
 
-      // Handle form submission
-      const feedbackForm = document.getElementById('feedbackForm');
-      feedbackForm.addEventListener('submit', async (e) => {
-          e.preventDefault(); // Prevent default form submission
+        // Handle form submission
+        const feedbackForm = document.getElementById('feedbackForm');
+        feedbackForm.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Prevent default form submission
 
-          if (!emailInput.value) {
-              alert("Email is missing. Please refresh the page.");
-              console.error("Email not set in hidden input field.");
-              return;
-          }
+            if (!emailInput.value) {
+                alert("Email is missing. Please refresh the page.");
+                console.error("Email not set in hidden input field.");
+                return;
+            }
 
-          // Gather form data
-          const formData = new FormData(feedbackForm);
-          console.log("Form Data:", formData);
+            // Gather form data
+            const formData = new FormData(feedbackForm);
 
-          try {
-              // Submit the form data using the Fetch API
-              const response = await fetch(feedbackForm.action, {
-                  method: 'POST',
-                  body: formData,
-              });
+            try {
+                // Submit the form data using the Fetch API
+                const response = await fetch(feedbackForm.action, {
+                    method: 'POST',
+                    body: formData,
+                });
 
-              // Log response status and text
-              console.log("Response Status:", response.status);
+                if (response.ok) {
+                    console.log("Form submitted successfully:", await response.text());
 
-              if (response.ok) {
-                  const result = await response.json(); // Parse JSON response
-                  console.log("Response JSON:", result);
-
-                  if (result.status === "success") {
-                      console.log("Form submitted successfully:", result.message);
-
-                      // Redirect to the Thank You page after successful submission
-                      window.location.href = 'https://npscollegedunia.github.io/CD_NPS/thankyou.html'; // Ensure URL is correct
-                  } else {
-                      console.error("Form submission failed:", result.message);
-                      alert("An error occurred while submitting the form: " + result.message);
-                  }
-              } else {
-                  throw new Error('Failed to submit form. Please try again.');
-              }
-          } catch (error) {
-              console.error("Error submitting the form:", error);
-              alert("An error occurred while submitting the form. Please try again.");
-          }
-      });
-  });
+                    // Redirect to the Thank You page
+                    window.location.href = './thankyou.html';
+                } else {
+                    console.error("Form submission failed:", response.statusText);
+                    alert("An error occurred while submitting the form. Please try again.");
+                }
+            } catch (error) {
+                console.error("Error submitting the form:", error);
+                alert("An error occurred while submitting the form. Please try again.");
+            }
+        });
+    });
 </script>
-
-
 
 
 
