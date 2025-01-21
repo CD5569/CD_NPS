@@ -267,10 +267,10 @@
             console.error("Email parameter not found in URL.");
         }
 
-        // Ensure email is included before form submission
+        // Handle form submission
         const feedbackForm = document.getElementById('feedbackForm');
-        feedbackForm.addEventListener('submit', (e) => {
-            e.preventDefault(); // Prevent the default form submission
+        feedbackForm.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Prevent default form submission
 
             if (!emailInput.value) {
                 alert("Email is missing. Please refresh the page.");
@@ -278,27 +278,33 @@
                 return;
             }
 
-            // Perform the form submission using Fetch API
+            // Gather form data
             const formData = new FormData(feedbackForm);
 
-            fetch(feedbackForm.action, {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.text())
-            .then(result => {
-                console.log("Form submitted successfully:", result);
+            try {
+                // Submit the form data using the Fetch API
+                const response = await fetch(feedbackForm.action, {
+                    method: 'POST',
+                    body: formData,
+                });
 
-                // Redirect to the Thank You page
-                window.location.href = './thankyou.html';
-            })
-            .catch(error => {
+                if (response.ok) {
+                    console.log("Form submitted successfully:", await response.text());
+
+                    // Redirect to the Thank You page
+                    window.location.href = './thankyou.html';
+                } else {
+                    console.error("Form submission failed:", response.statusText);
+                    alert("An error occurred while submitting the form. Please try again.");
+                }
+            } catch (error) {
                 console.error("Error submitting the form:", error);
                 alert("An error occurred while submitting the form. Please try again.");
-            });
+            }
         });
     });
 </script>
+
 
 
 	
