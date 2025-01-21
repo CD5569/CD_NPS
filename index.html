@@ -288,14 +288,16 @@
                     body: formData,
                 });
 
-                if (response.ok) {
-                    console.log("Form submitted successfully:", await response.text());
+                const result = await response.json(); // Parse JSON response
+
+                if (result.status === "success") {
+                    console.log("Form submitted successfully:", result.message);
 
                     // Redirect to the Thank You page
                     window.location.href = './thankyou.html';
                 } else {
-                    console.error("Form submission failed:", response.statusText);
-                    alert("An error occurred while submitting the form. Please try again.");
+                    console.error("Form submission failed:", result.message);
+                    alert("An error occurred while submitting the form: " + result.message);
                 }
             } catch (error) {
                 console.error("Error submitting the form:", error);
@@ -304,8 +306,6 @@
         });
     });
 </script>
-
-
 
 	
 </body>
