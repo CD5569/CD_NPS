@@ -270,19 +270,36 @@
         // Ensure email is included before form submission
         const feedbackForm = document.getElementById('feedbackForm');
         feedbackForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent the default form submission
+
             if (!emailInput.value) {
-                e.preventDefault();
                 alert("Email is missing. Please refresh the page.");
                 console.error("Email not set in hidden input field.");
-            } else {
-                // Allow the form to be submitted and then redirect to the Thank You page
-                setTimeout(() => {
-                    window.location.href = './thankyou.html'; // Redirect to Thank You page
-                }, 1000); // Delay to ensure form submission
+                return;
             }
+
+            // Perform the form submission using Fetch API
+            const formData = new FormData(feedbackForm);
+
+            fetch(feedbackForm.action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(result => {
+                console.log("Form submitted successfully:", result);
+
+                // Redirect to the Thank You page
+                window.location.href = './thankyou.html';
+            })
+            .catch(error => {
+                console.error("Error submitting the form:", error);
+                alert("An error occurred while submitting the form. Please try again.");
+            });
         });
     });
 </script>
+
 
 	
 </body>
