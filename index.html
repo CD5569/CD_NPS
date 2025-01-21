@@ -219,7 +219,7 @@
                 <textarea name="comments" rows="4" placeholder="Tell us how we can improve or share any additional feedback!"></textarea>
             </div>
 
-            <button type="submit" class="submit-btn"><a href="thankyou.html">Submit Feedback</a></button>
+            <button type="submit" class="submit-btn">Submit Feedback</button>
         </form>
 
         <div class="footer">
@@ -269,13 +269,19 @@
 
         // Ensure email is included before form submission
         const feedbackForm = document.getElementById('feedbackForm');
-        feedbackForm.addEventListener('submit', (e) => {
-            if (!emailInput.value) {
-                e.preventDefault();
-                alert("Email is missing. Please refresh the page.");
-                console.error("Email not set in hidden input field.");
-            }
+feedbackForm.addEventListener('submit', (e) => {
+    if (!emailInput.value) {
+        e.preventDefault();
+        alert("Email is missing. Please refresh the page.");
+        console.error("Email not set in hidden input field.");
+    } else {
+        // Redirect to the Thank You page after form submission
+        feedbackForm.addEventListener('submit', () => {
+            window.location.href = './thankyou.html'; // Update path if needed
         });
+    }
+});
+
     });
 </script>
 </body>
