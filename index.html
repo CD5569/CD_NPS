@@ -269,20 +269,21 @@
 
         // Ensure email is included before form submission
         const feedbackForm = document.getElementById('feedbackForm');
-feedbackForm.addEventListener('submit', (e) => {
-    if (!emailInput.value) {
-        e.preventDefault();
-        alert("Email is missing. Please refresh the page.");
-        console.error("Email not set in hidden input field.");
-    } else {
-        // Redirect to the Thank You page after form submission
-        feedbackForm.addEventListener('submit', () => {
-            window.location.href = './thankyou.html'; // Update path if needed
+        feedbackForm.addEventListener('submit', (e) => {
+            if (!emailInput.value) {
+                e.preventDefault();
+                alert("Email is missing. Please refresh the page.");
+                console.error("Email not set in hidden input field.");
+            } else {
+                // Allow the form to be submitted and then redirect to the Thank You page
+                setTimeout(() => {
+                    window.location.href = './thankyou.html'; // Redirect to Thank You page
+                }, 1000); // Delay to ensure form submission
+            }
         });
-    }
-});
-
     });
 </script>
+
+	
 </body>
 </html>
