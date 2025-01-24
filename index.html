@@ -271,6 +271,8 @@
 
         // Handle form submission
         const feedbackForm = document.getElementById('feedbackForm');
+        const submitButton = document.querySelector('.submit-btn');
+
         feedbackForm.addEventListener('submit', async (e) => {
             e.preventDefault(); // Prevent default form submission
             console.log("Form submission started");
@@ -281,6 +283,10 @@
                 console.error("Email not set in hidden input field.");
                 return;
             }
+
+            // Disable the submit button to prevent multiple submissions
+            submitButton.disabled = true;
+            submitButton.textContent = "Submitting...";
 
             // Gather form data
             const formData = new FormData(feedbackForm);
@@ -300,6 +306,8 @@
                     } else {
                         console.error("Form submission failed:", response.statusText);
                         alert("An error occurred while submitting the form. Please try again.");
+                        submitButton.disabled = false; // Re-enable the button on failure
+                        submitButton.textContent = "Submit Feedback";
                     }
                 } else {
                     console.log("Fetch not supported. Using XMLHttpRequest.");
@@ -313,6 +321,8 @@
                             } else {
                                 console.error("Form submission failed with XMLHttpRequest:", xhr.statusText);
                                 alert("An error occurred while submitting the form. Please try again.");
+                                submitButton.disabled = false; // Re-enable the button on failure
+                                submitButton.textContent = "Submit Feedback";
                             }
                         }
                     };
@@ -321,12 +331,12 @@
             } catch (error) {
                 console.error("Error submitting the form:", error);
                 alert("An error occurred while submitting the form. Please try again.");
+                submitButton.disabled = false; // Re-enable the button on error
+                submitButton.textContent = "Submit Feedback";
             }
         });
     });
 </script>
-
-
 
 	
 </body>
