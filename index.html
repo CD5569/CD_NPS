@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Collegedunia Feedback</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <style>
+
         body {
-            font-family: Arial, sans-serif;
+
+            font-family: 'Inter', sans-serif;
             background-color: #f9f9f9;
             margin: 0;
             padding: 0;
             color: #444444; /* Darker font color for overall text */
         }
         .container {
+
             max-width: 600px;
             margin: 20px auto;
             background: #ffffff;
@@ -27,6 +32,29 @@
         .logo img {
             max-width: 200px;
         }
+
+
+        .progress-bar {
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            width: 0;
+            background-color: #007BFF;
+            transition: width 0.3s ease-in-out;
+        }
+        .urgency-line {
+            text-align: center;
+            color: #007BFF;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+
         h2 {
             text-align: center;
             color: #333333; /* Darker color for the heading */
@@ -135,7 +163,19 @@
         <div class="logo">
             <img src="https://image-static.collegedunia.com/public/images/cd_logo_dark_new.png" alt="Collegedunia Logo">
         </div>
+
+
+
+
+
         <h2>We Value Your Feedback!</h2>
+
+        <div class="progress-bar">
+            <div class="progress-bar-fill"></div>
+        </div>
+        <div class="urgency-line">Takes less than 30 seconds!</div>
+
+
         <p>Hi Partner!</p>
         <p>Please take a moment to share your experience with us. Your feedback helps us grow and serve you better.</p>
 
@@ -224,7 +264,6 @@
 
         <div class="footer">
             <p>Thank you for helping us grow and serve you better!</p>
-            <p>Don't want to receive emails? <a href="#">Click here to unsubscribe</a>.</p>
         </div>
     </div>
 
@@ -253,6 +292,8 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+
+
         // Extract the email parameter from the URL
         const urlParams = new URLSearchParams(window.location.search);
         const email = urlParams.get('email');
@@ -336,6 +377,80 @@
             }
         });
     });
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const progressBarFill = document.querySelector('.progress-bar-fill');
+    const ratingGroups = document.querySelectorAll('.rating');
+    const commentBox = document.querySelector('textarea');
+
+    const totalSections = ratingGroups.length + 1; // Ratings + Comment Box
+    const answeredSections = new Set(); // Track answered sections
+
+    function updateProgress() {
+        const progress = (answeredSections.size / totalSections) * 100;
+        progressBarFill.style.width = `${progress}%`;
+    }
+
+    // Handle rating selection
+    ratingGroups.forEach((group, index) => {
+        group.addEventListener('click', (event) => {
+            if (event.target.dataset.value !== undefined) {
+                answeredSections.add(`rating-${index}`); // Mark this rating question as answered
+                updateProgress();
+            }
+        });
+    });
+
+    // Handle comments input
+    commentBox.addEventListener('input', () => {
+        if (commentBox.value.trim().length > 0) {
+            answeredSections.add('comments');
+        } else {
+            answeredSections.delete('comments'); // Remove if text is cleared
+        }
+        updateProgress();
+    });
+});
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const progressBarFill = document.querySelector('.progress-bar-fill');
+    const ratingGroups = document.querySelectorAll('.rating');
+    const commentBox = document.querySelector('textarea');
+
+    const totalSections = ratingGroups.length + 1; // Ratings + Comment Box
+    const answeredSections = new Set(); // Track answered sections
+
+    function updateProgress() {
+        const progress = (answeredSections.size / totalSections) * 100;
+        progressBarFill.style.width = `${progress}%`;
+    }
+
+    // Handle rating selection
+    ratingGroups.forEach((group, index) => {
+        group.addEventListener('click', (event) => {
+            if (event.target.dataset.value !== undefined) {
+                answeredSections.add(`rating-${index}`); // Mark this rating question as answered
+                updateProgress();
+            }
+        });
+    });
+
+    // Handle comments input
+    commentBox.addEventListener('input', () => {
+        if (commentBox.value.trim().length > 0) {
+            answeredSections.add('comments');
+        } else {
+            answeredSections.delete('comments'); // Remove if text is cleared
+        }
+        updateProgress();
+    });
+});
+
+
 </script>
 
 	
